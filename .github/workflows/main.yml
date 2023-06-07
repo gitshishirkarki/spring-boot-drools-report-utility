@@ -1,0 +1,35 @@
+name: Shishir Reporter CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Manually triggered workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+          settings-path: ${{ github.workspace }} # location for the settings.xml file
+          gradle-version: '7.6.1'
+
+      - name: Install Dependencies and Build with Gradle
+        run: gradle build -x test
+
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ShishirReportUtility
+          path: |
+            build/libs/*.jar
+            src/main/resources/application.properties  # Include the properties file
