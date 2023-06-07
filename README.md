@@ -12,6 +12,8 @@ The Report Utility is a library project written in Java 8 using the Spring Boot 
 - **Spring Boot**: Built on top of the Spring Boot framework, providing a robust and scalable architecture for report generation.
 - **Continuous Integration and Delivery (CI/CD)**: The project includes a CI/CD pipeline on GitHub, facilitating the deployment of library JARs generated from the repository.
 
+![Shishir Report Util](https://github.com/gitshishirkarki/spring-boot-drools-report-utility/blob/main/images/CICD.png)
+
 ## Prerequisites
 
 Before using the Report Utility, ensure that you have the following dependencies installed:
